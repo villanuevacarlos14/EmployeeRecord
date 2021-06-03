@@ -1,0 +1,24 @@
+<form [formGroup]="addEmployeeFormGroup" (ngSubmit)="onSubmit()">
+<h1 mat-dialog-title *ngIf="!data.isDelete">{{data.id ===0? 'Add':'Edit'}} Employee</h1>
+<h1 mat-dialog-title *ngIf="data.isDelete">Delete Employee</h1>
+<div mat-dialog-content>
+   
+        <mat-form-field appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input matInput placeholder="First Name" type="text" formControlName="firstName" [disabled]="data.isDelete">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Middle Name</mat-label>
+            <input matInput placeholder="Middle Name" type="text" formControlName="middleName" [disabled]="data.isDelete">
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input matInput placeholder="Last Name" type="text" formControlName="lastName" [disabled]="data.isDelete">
+        </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <span class="example-fill-remaining-space"></span>
+  
+    <button [disabled]="addEmployeeFormGroup.invalid" mat-button type="submit" color="accent" cdkFocusInitial> {{!data.isDelete? 'Save':'Delete'}}</button>
+</div>
+</form>
